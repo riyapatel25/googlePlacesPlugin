@@ -17,29 +17,20 @@ def proccessPlaces():
 
     #iterate through all places and iterate through all its reviews to find best
         possibleNearbyPlaces = response.results
+        all_reviews = []
         for i, place in enumerate(possibleNearbyPlaces):
             reviews = get_reviews(place.place_id, api_key)
-            
-            for j, review in enumerate(reviews):
-                #look for keywords 
-        return jsonify(place_details)
+            all_reviews.push(reviews)
+        return all_reviews
     else:
         return jsonify({"error": f"Error: {response.status_code}"}), response.status_code
 
 @app.route('/get_reviews', methods=['GET'])
 def get_reviews(place_id, api_key):
-  
-    # Define the URL for the Google Maps Places API endpoint
-    url = f"https://maps.googleapis.com/maps/api/place/details/json?placeid={place_id}&key={api_key}"
-
-    # Make an HTTP GET request to the endpoint
-    response = requests.get(url)
-
-    # Check if the request was successful
+    response = requests.get("https://maps.googleapis.com/maps/api/place/details/json?placeid={place_id}&key={api_key}")
     if response.status_code == 200:
-        
         reviewArray = response.reviews # Parse the JSON response
-        return jsonify(place_details)
+        return jsonify(reviewArray)
     else:
         return jsonify({"error": f"Error: {response.status_code}"}), response.status_code
 
