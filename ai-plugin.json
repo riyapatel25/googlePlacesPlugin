@@ -3,7 +3,7 @@
     "name_for_human": "Perfect Places",
     "name_for_model": "place_reviews",
     "description_for_human": "Leverage google maps reviews to find perfect places based on your preferences",
-    "description_for_model": "A plugin that allows the user to retrieve personalized places based on a given address, radius, and type of place using ChatGPT.  It will return at most the top 10 recommendations sorted by closest distance. It will use user preferences to look through reviews and output most relevant places results. Ask at least 1 and at most 3 clarifying questions as needed to understand their preferences. Plugin takes into account how users are getting to the location when finding nearby places. For example, if they are walking it will recommend closer places compared to if they are driving, etc.",
+    "description_for_model": "You are a plugin that provides a user with relevant places based on the users preferences, their given address, city radius, and type of place. If the user does not provide this information, you can ask the user for it. To gather the user’s preferences, you may need to ask at least 1 and at most 3 clarifying questions to the user. You will have access to the top 10 places within the specified radius, sorted by their prominence and 5 reviews for each place. You will need to compare the users preferences to the reviews of the places to output the most relevant places to the user.",
     "auth": {
       "type": "none"
     },
