@@ -12,7 +12,7 @@
       "url": "http://localhost:3333/.well-known/openapi.yaml",
       "is_user_authenticated": false
     },
-    "logo_url": "https://your-domain.com/logo.png",
+    "logo_url": "http://localhost:3333/logo",
     "contact_email": "support@your-domain.com",
     "legal_info_url": "https://www.your-domain.com/legal"
   }

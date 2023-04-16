@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request, send_from_directory
+from flask import Flask, jsonify, request, send_from_directory, send_file
 from flask_cors import CORS
 import requests
 import os
@@ -115,6 +115,11 @@ def serve_ai_plugin():
 @app.route("/.well-known/openapi.yaml")
 def serve_openapi_yaml():
     return send_from_directory(".", "openapi.yaml", mimetype="text/yaml")
+
+
+@app.route("/logo")
+def serve_logo():
+    return send_from_directory(".", "perfect.png", mimetype="image/png")
 
 
 if __name__ == "__main__":
