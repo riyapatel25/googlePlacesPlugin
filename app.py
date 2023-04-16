@@ -66,7 +66,7 @@ def get_reviews(place_id, name, address):
     if response.status_code == 200:
         reviewObj = {
             "name": name,
-            "reviews": response.json().get("result", {}).get("reviews", []),
+            "reviews": response.json().get("result", {}).get("reviews", [])[:3],
             "address": address,
         }
         return reviewObj
