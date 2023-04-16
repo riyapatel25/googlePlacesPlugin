@@ -6,7 +6,7 @@ from waitress import serve
 
 
 app = Flask(__name__)
-CORS(app, origins=["http://127.0.0.1:5000", "http://localhost:5000", "https://chat.openai.com"])
+CORS(app, origins=["http://localhost:3333", "https://chat.openai.com"])
 
 
 api_key = os.environ.get("GOOGLE_API_KEY")
@@ -108,20 +108,20 @@ def proccessPlaces(address, radius, type_of):
         return []
 
     
-@app.route("/places", methods=["GET"])
-def get_place_reviews():
-    location = request.args.get("location")
-    radius = request.args.get("radius")
-    type_of = request.args.get("type")
+# @app.route("/places", methods=["GET"])
+# def get_place_reviews():
+#     location = request.args.get("location")
+#     radius = request.args.get("radius")
+#     type_of = request.args.get("type")
 
-    try:
-        # Convert radius to integer
-        radius = int(radius)
-        reviews = proccessPlaces(location, radius, type_of)
-        # Return a JSON response
-        return jsonify({"reviews": reviews})
-    except Exception as e:
-        return jsonify({"error": str(e)}), 400
+#     try:
+#         # Convert radius to integer
+#         radius = int(radius)
+#         reviews = proccessPlaces(location, radius, type_of)
+#         # Return a JSON response
+#         return jsonify({"reviews": reviews})
+#     except Exception as e:
+#         return jsonify({"error": str(e)}), 400
 
 @app.route("/.well-known/ai-plugin.json")
 def serve_ai_plugin():
@@ -134,4 +134,4 @@ def serve_openapi_yaml():
 
 
 if __name__ == "__main__":
-    serve(app, host="127.0.0.1", port=5000)
+    serve(app, host="localhost", port=3333)
