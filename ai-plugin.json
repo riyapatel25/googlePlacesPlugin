@@ -1,0 +1,19 @@
+{
+    "schema_version": "v1",
+    "name_for_human": "Place Reviews Plugin",
+    "name_for_model": "place_reviews",
+    "description_for_human": "Plugin for retrieving reviews of places based on location, radius, and type. You can use this plugin to get reviews of nearby places.",
+    "description_for_model": "Plugin for retrieving reviews of places based on location, radius, and type. You can use this plugin to get reviews of nearby places. Use the keyword 'place_reviews' to interact with this plugin.",
+    "auth": {
+      "type": "none"
+    },
+    "api": {
+      "type": "openapi",
+      "url": " http://127.0.0.1:5000/.well-known/openapi.yaml",
+      "is_user_authenticated": false
+    },
+    "logo_url": "https://your-domain.com/logo.png",
+    "contact_email": "support@your-domain.com",
+    "legal_info_url": "https://www.your-domain.com/legal"
+  }
+  

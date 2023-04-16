@@ -1,0 +1,60 @@
+openapi: 3.0.1
+info:
+  title: Place Reviews Plugin
+  description: A plugin that allows the user to retrieve reviews of places based on location, radius, and type using ChatGPT.
+  version: 'v1'
+servers:
+  - url: http://127.0.0.1:5000/
+paths:
+  /places:
+    get:
+      operationId: getPlaceReviews
+      summary: Get reviews of places based on location, radius, and type
+      parameters:
+        - name: location
+          in: query
+          description: The latitude and longitude of the location around which to retrieve place information (e.g., "48.8588443,2.2943506").
+          required: true
+          schema:
+            type: string
+        - name: radius
+          in: query
+          description: The distance (in meters) within which to return place results.
+          required: true
+          schema:
+            type: integer
+        - name: type
+          in: query
+          description: The type of place to search for (e.g., "restaurant").
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getPlaceReviewsResponse'
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorResponse'
+components:
+  schemas:
+    getPlaceReviewsResponse:
+      type: object
+      properties:
+        reviews:
+          type: array
+          items:
+            type: object
+          description: The list of reviews for each place.
+    errorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error message.
