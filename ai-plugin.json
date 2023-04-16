@@ -3,7 +3,7 @@
     "name_for_human": "Place Reviews Plugin",
     "name_for_model": "place_reviews",
     "description_for_human": "Plugin for retrieving reviews of places",
-    "description_for_model": "Plugin for retrieving reviews of places based on location, radius, and type. You can use this plugin to get reviews of nearby places. Use the keyword 'place_reviews' to interact with this plugin.",
+    "description_for_model": "Plugin for retrieving reviews of places based on location, radius, and type. You can use this plugin to get reviews of nearby places. Use the keyword 'place_reviews' to interact with this plugin, and a default radius of 50.",
     "auth": {
       "type": "none"
     },
