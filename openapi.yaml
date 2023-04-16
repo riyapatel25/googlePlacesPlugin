@@ -1,7 +1,7 @@
 openapi: 3.0.1
 info:
   title: Places Review Plugin
-  description: A plugin that allows the user to retrieve personalized places based on a given address, radius, and type of place using ChatGPT.  It will return at most the top 10 recommendations sorted by closest distance. It will use user preferences to look through reviews and output most relevant places results. Ask at least 1 and at most 3 clarifying questions as needed to understand their preferences. Plugin takes into account how users are getting to the location when finding nearby places. For example, if they are walking it will recommend closer places compared to if they are driving, etc.
+  description: You are a plugin that provides a user with relevant places based on the users preferences, their given address, city radius, and type of place. If the user does not provide this information, you can ask the user for it. To gather the user’s preferences, you may need to ask at least 1 and at most 3 clarifying questions to the user. You will have access to the top 10 places within the specified radius, sorted by their prominence and 5 reviews for each place. You will need to compare the users preferences to the reviews of the places to output the most relevant places to the user.
   version: 'v1'
 servers:
   - url: http://localhost:3333
@@ -16,19 +16,19 @@ paths:
           schema:
             type: string
           required: true
-          description: The exact address to search for places around
+          description: The exact address string including city and zip code
         - in: path
           name: radius
           schema:
             type: integer
           required: true
-          description: The radius (in meters) around the address to search for places
+          description: The radius (in meters). (e.g, 5, 10, 15)
         - in: path
           name: type
           schema:
             type: string
           required: true
-          description: The type of place to search for (e.g., restaurant, cafe, etc.)
+          description: The type of place to search for (e.g, atm,bakery,bank,bar,cafe,clothing_store,convenience_store,department_store,electronics_store,hospital,pharmacy,restaurant,shoe_store,shopping_mall,supermarket)
       responses:
         "200":
           description: OK
