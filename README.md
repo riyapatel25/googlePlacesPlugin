@@ -6,6 +6,8 @@
 
 Powered by Google Reviews to intelligently curate places that align with your unique preferences. Dog-friendly? Work-friendly? We've got you covered. Say goodbye to endless scrolling through reviews!
 
+https://devpost.com/software/perfect-places
+
 https://docs.google.com/presentation/d/1CRkf0uXR3YvL-2Ce5eV_SCaWVo29DXIAEko3S9-0fPE/edit#slide=id.p
 
 
