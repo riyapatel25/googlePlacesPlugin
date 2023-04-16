@@ -19,7 +19,6 @@ def get_place_address(place_id):
         f"&fields=formatted_address"
         f"&key={api_key}"
     )
-
     response = requests.get(url)
 
     if response.status_code == 200:
@@ -41,6 +40,8 @@ def get_lat_lng_from_address(address):
     )
     response = requests.get(url)
 
+    response = requests.get(url)
+
     if response.status_code == 200:
         location = (
             response.json()
@@ -50,7 +51,7 @@ def get_lat_lng_from_address(address):
         )
         return f"{location.get('lat')},{location.get('lng')}"
     else:
-        return "1625 Leavenworth st apt 303 San Francisco CA 94109"
+        return "37.795980, -122.416920"
 
 
 def get_reviews(place_id, name, address):
@@ -74,14 +75,14 @@ def get_reviews(place_id, name, address):
         return {}
 
 
-@app.route("/get_place_details/<address>/<int:radius>/<type_of>", methods=["GET"])
-def proccessPlaces(address, radius, type_of):
+@app.route("/get_place_details/<address>/<int:radius>/<type>", methods=["GET"])
+def proccessPlaces(address, radius, type):
     location = get_lat_lng_from_address(address)
 
     if not location:
         return {"error": "Unable to get coordinates for the specified address"}, 400
 
-    params = {"key": api_key, "location": location, "radius": radius, "type": type_of}
+    params = {"key": api_key, "location": location, "radius": radius, "type": type}
 
     url = (
         f"https://maps.googleapis.com/maps/api/place/nearbysearch/json"
@@ -116,6 +117,9 @@ def serve_ai_plugin():
 def serve_openapi_yaml():
     return send_from_directory(".", "openapi.yaml", mimetype="text/yaml")
 
+@app.route("/logo")
+def serve_logo():
+    return send_from_directory(".", "perfect.png", mimetype="image/png")
 
 if __name__ == "__main__":
     serve(app, host="localhost", port=3333)

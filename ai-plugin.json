@@ -1,9 +1,9 @@
 {
     "schema_version": "v1",
-    "name_for_human": "Place Reviews Plugin",
+    "name_for_human": "Perfect Places",
     "name_for_model": "place_reviews",
-    "description_for_human": "Plugin for retrieving reviews of places",
-    "description_for_model": "Plugin for retrieving reviews of places based on location, radius, and type. You can use this plugin to get reviews of nearby places. Use the keyword 'place_reviews' to interact with this plugin, and a default radius of 50.",
+    "description_for_human": "Leverage google maps reviews to find perfect places based on your preferences",
+    "description_for_model": "A plugin that allows the user to retrieve personalized places based on a given address, radius, and type of place using ChatGPT.  It will return at most the top 10 recommendations sorted by closest distance. It will use user preferences to look through reviews and output most relevant places results. Ask at least 1 and at most 3 clarifying questions as needed to understand their preferences. Plugin takes into account how users are getting to the location when finding nearby places. For example, if they are walking it will recommend closer places compared to if they are driving, etc.",
     "auth": {
       "type": "none"
     },
@@ -12,7 +12,7 @@
       "url": "http://localhost:3333/.well-known/openapi.yaml",
       "is_user_authenticated": false
     },
-    "logo_url": "https://your-domain.com/logo.png",
+    "logo_url": "http://localhost:3333/logo",
     "contact_email": "support@your-domain.com",
     "legal_info_url": "https://www.your-domain.com/legal"
   }
