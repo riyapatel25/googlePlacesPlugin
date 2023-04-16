@@ -16,6 +16,7 @@ As avid explorers of new places, we often found ourselves spending considerable 
 1. Python
 2. Open AI
 3. Flask
+4. Google Maps API
 
 # How We Built It
 
