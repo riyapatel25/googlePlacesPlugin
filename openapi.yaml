@@ -4,7 +4,7 @@ info:
   description: A plugin that allows the user to retrieve reviews of places based on location, radius, and type using ChatGPT.
   version: 'v1'
 servers:
-  - url: http://127.0.0.1:5000/
+  - url: http://localhost:3333
 paths:
   /places:
     get:
