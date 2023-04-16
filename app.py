@@ -107,6 +107,22 @@ def proccessPlaces(address, radius, type_of):
     else:
         return []
 
+
+
+@app.route("/.well-known/ai-plugin.json")
+def serve_ai_plugin():
+    return send_from_directory(".", "ai-plugin.json", mimetype="application/json")
+
+
+@app.route("/.well-known/openapi.yaml")
+def serve_openapi_yaml():
+    return send_from_directory(".", "openapi.yaml", mimetype="text/yaml")
+
+
+if __name__ == "__main__":
+    serve(app, host="localhost", port=3333)
+
+
     
 # @app.route("/places", methods=["GET"])
 # def get_place_reviews():
@@ -122,16 +138,3 @@ def proccessPlaces(address, radius, type_of):
 #         return jsonify({"reviews": reviews})
 #     except Exception as e:
 #         return jsonify({"error": str(e)}), 400
-
-@app.route("/.well-known/ai-plugin.json")
-def serve_ai_plugin():
-    return send_from_directory(".", "ai-plugin.json", mimetype="application/json")
-
-
-@app.route("/.well-known/openapi.yaml")
-def serve_openapi_yaml():
-    return send_from_directory(".", "openapi.yaml", mimetype="text/yaml")
-
-
-if __name__ == "__main__":
-    serve(app, host="localhost", port=3333)
