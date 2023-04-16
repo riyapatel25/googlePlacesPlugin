@@ -2,7 +2,7 @@
 
 # Overview
 
-##Perfect Places
+## Perfect Places
 
 Powered by Google Reviews to intelligently curate places that align with your unique preferences. Dog-friendly? Work-friendly? We've got you covered. Say goodbye to endless scrolling through reviews!
 
