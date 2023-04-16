@@ -11,18 +11,24 @@ CORS(app, origins=["http://localhost:3333", "https://chat.openai.com"])
 
 api_key = os.environ.get("GOOGLE_API_KEY")
 
+
 def get_place_address(place_id):
-    # Construct the URL for the Place Details request
-    url = f"https://maps.googleapis.com/maps/api/place/details/json?place_id={place_id}&fields=formatted_address&key={api_key}"
-    
+    url = (
+        f"https://maps.googleapis.com/maps/api/place/details/json"
+        f"?place_id={place_id}"
+        f"&fields=formatted_address"
+        f"&key={api_key}"
+    )
+
     response = requests.get(url)
-    
+
     if response.status_code == 200:
         data = response.json()
         address = data.get("result", {}).get("formatted_address", "")
         return address
     else:
         return None
+
 
 def get_lat_lng_from_address(address):
     params = {
@@ -45,14 +51,6 @@ def get_lat_lng_from_address(address):
         return f"{location.get('lat')},{location.get('lng')}"
     else:
         return "1625 Leavenworth st apt 303 San Francisco CA 94109"
-
-    #iterate through all places and iterate through all its reviews to find best
-        possibleNearbyPlaces = response.results
-        all_reviews = []
-        for i, place in enumerate(possibleNearbyPlaces):
-            reviews = get_reviews(place.place_id, api_key)
-            all_reviews.push(reviews)
-        return all_reviews
 
 
 def get_reviews(place_id, name, address):
@@ -96,17 +94,17 @@ def proccessPlaces(address, radius, type_of):
     response = requests.get(url)
 
     if response.status_code == 200:
-        possibleNearbyPlaces = response.json().get("results", [])
+        possibleNearbyPlaces = response.json().get("results", [])[:10]
+
         all_reviews = []
         for index, place in enumerate(possibleNearbyPlaces):
             name = place.get("name", "")
             address = get_place_address(place["place_id"])
-            reviews = get_reviews(place["place_id"], name, address), 
+            reviews = get_reviews(place["place_id"], name, address)
             all_reviews.append(reviews)
         return all_reviews
     else:
         return []
-
 
 
 @app.route("/.well-known/ai-plugin.json")
@@ -121,20 +119,3 @@ def serve_openapi_yaml():
 
 if __name__ == "__main__":
     serve(app, host="localhost", port=3333)
-
-
-    
-# @app.route("/places", methods=["GET"])
-# def get_place_reviews():
-#     location = request.args.get("location")
-#     radius = request.args.get("radius")
-#     type_of = request.args.get("type")
-
-#     try:
-#         # Convert radius to integer
-#         radius = int(radius)
-#         reviews = proccessPlaces(location, radius, type_of)
-#         # Return a JSON response
-#         return jsonify({"reviews": reviews})
-#     except Exception as e:
-#         return jsonify({"error": str(e)}), 400

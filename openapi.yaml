@@ -1,7 +1,7 @@
 openapi: 3.0.1
 info:
   title: Places Review Plugin
-  description: A plugin that allows the user to retrieve reviews of places based on a given address, radius, and type of place using ChatGPT.
+  description: A plugin that allows the user to retrieve personalized places based on a given address, radius, and type of place using ChatGPT.  It will return at most the top 10 recommendations sorted by closest distance. It will use user preferences to look through reviews and output most relevant places results. Ask at least 1 and at most 3 clarifying questions as needed to understand their preferences. Use deafult address of 1625 leavenworth st Apt 303 San Francisco, CA 94109 if not specified.
   version: 'v1'
 servers:
   - url: http://localhost:3333
@@ -16,7 +16,7 @@ paths:
           schema:
             type: string
           required: true
-          description: The address to search for places around
+          description: The exact address to search for places around
         - in: path
           name: radius
           schema:
