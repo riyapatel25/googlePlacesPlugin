@@ -21,6 +21,16 @@ As avid explorers of new places, we often found ourselves spending considerable 
 
 The plugin is built using ChatGPT and integrates with the Google Places API to retrieve reviews of places based on user queries. We developed a methodology to analyze the context of reviews and identify key attributes that align with user preferences. The plugin then curates a list of places that match the user's criteria and presents them in an easy-to-understand format. If the plugin lacks sufficient information to provide accurate recommendations, it will ask the user for additional context or details. Users can also request new options if they're not satisfied with the initial recommendations.
 
+# Installation
+
+Server will start in `localhost:3333`
+
+Available routes are below.
+
+```
+//get_place_details
+...
+```
 
 
 
